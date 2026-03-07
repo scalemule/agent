@@ -1,0 +1,57 @@
+{
+  "name": "@scalemule/agent",
+  "version": "0.0.1",
+  "description": "ScaleMule Agent SDK for AI agent runtimes",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "release": "npm run prepublishOnly && npm publish --access public"
+  },
+  "keywords": [
+    "scalemule",
+    "agent",
+    "ai",
+    "sdk",
+    "typescript"
+  ],
+  "author": "ScaleMule Inc. <support@scalemule.com>",
+  "license": "MIT",
+  "homepage": "https://scalemule.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scalemule/agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/scalemule/agent/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

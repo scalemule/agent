@@ -169,7 +169,7 @@ export class ScaleMuleAgent {
   private async transitionToInProgress(taskId: string, retries = 3): Promise<void> {
     for (let i = 0; i < retries; i++) {
       try {
-        await this.request('PATCH', `/v1/agent-projects/tasks/${taskId}`, { status: 'in_progress' })
+        await this.request('POST', `/v1/agent-projects/tasks/${taskId}/start`, { agent_id: this.config.agentId })
         return
       } catch (err) {
         if (i === retries - 1) throw err

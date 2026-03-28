@@ -26,6 +26,7 @@ export interface ClaimResult {
   agent_id: string
   attempt_number: number
   lease_expires_at: string
+  current_phase?: string
 }
 
 export interface SubmitResult {
@@ -45,6 +46,10 @@ export interface Task {
   metadata?: Record<string, unknown>
   created_at: string
   updated_at: string
+  pipeline_id?: string
+  pipeline_version?: number
+  current_phase?: string
+  phase_entered_at?: string
 }
 
 export interface TaskTransition {

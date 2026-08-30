@@ -1,15 +1,23 @@
 {
   "name": "@scalemule/agent",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ScaleMule Agent SDK for AI agent runtimes",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "bin": {
+    "scalemule": "dist/cli.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./hosting": {
+      "types": "./dist/hosting.d.ts",
+      "import": "./dist/hosting.mjs",
+      "require": "./dist/hosting.js"
     }
   },
   "files": [
@@ -18,9 +26,10 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "build": "tsup src/index.ts src/hosting.ts src/cli.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts src/hosting.ts src/cli.ts --format cjs,esm --dts --watch",
     "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
     "prepublishOnly": "node -e \"const v=require('./package.json').version; if(!/^0\\.(0|1)\\.\\d+$/.test(v)){console.error('ERR: SDK '+v+' violates patch-only policy (0.0.x or 0.1.x only). See CONTRIBUTING.md SDK versioning section.');process.exit(1)}\" && npm run build",
     "release": "npm run prepublishOnly && npm publish --access public"
   },

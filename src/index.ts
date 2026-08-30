@@ -12,3 +12,12 @@ export type {
   BlockOptions,
 } from './types'
 export type { HeartbeatEvent } from './heartbeat'
+export {
+  ScaleMuleHostingClient,
+  ScaleMuleHostingError,
+} from './hosting'
+export type {
+  Deployment,
+  HostingProject,
+  ReleaseToken,
+} from './hosting'
